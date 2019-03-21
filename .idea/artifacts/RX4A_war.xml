@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="RX4A:war">
+    <output-path>$PROJECT_DIR$/RX4A/target</output-path>
+    <root id="archive" name="RX4A-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="RX4A:war exploded" />
+    </root>
+  </artifact>
+</component>

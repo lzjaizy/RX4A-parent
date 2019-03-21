@@ -1,0 +1,71 @@
+#Ĭ��ʹ������
+spring:
+    profiles:
+        active: dev
+
+    datasource:
+        url: jdbc:mysql://180.168.156.212:2366/passworder?serverTimezone=GMT%2B8&autoReconnect=true
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+
+    http:
+        encoding:
+            charset: utf-8
+            enabled: true
+        multipart:
+          enabled: true
+          max-file-size: 100Mb
+          max-request-size: 100Mb
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #按字段名字建表
+        show-sql: true
+        database: mysql
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+    thymeleaf:
+        cache: false
+        prefix: classpath:/static/
+        suffix: .html
+
+    messages:
+        basename: myconfig
+
+    redis:
+        database: 0
+        host: 47.75.71.198
+        password: lzjaizy2009
+        jedis:
+            pool:
+                #最大连接数据库连接数,设 0 为没有限制
+                max-active: 8
+                #最大等待连接中的数量,设 0 为没有限制
+                max-idle: 8
+                #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+                max-wait: -1
+                #最小等待连接中的数量,设 0 为没有限制
+                min-idle: 0
+        port: 6379
+        #连接超时毫秒
+        timeout: 10000
+
+mybatis:
+    typeAliasesPackage: com.nettop.demo.entity
+    mapperLocations: classpath:mapper/*.xml
+
+shiro:
+    cas: http://192.168.0.42:8080/sso
+    server: http://127.0.0.1:8080
+
+pagehelper:
+    helper-dialect: mysql
+    reasonable: true
+    support-methods-arguments: true
+    params: count=countSql
+
+filePath: /Users/jason/upload/

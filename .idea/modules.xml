@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RX4A/RX4A.iml" filepath="$PROJECT_DIR$/RX4A/RX4A.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RX4A-client/RX4A-client-core/RX4A-client-core.iml" filepath="$PROJECT_DIR$/RX4A-client/RX4A-client-core/RX4A-client-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RX4A-client/RX4A-client-parent.iml" filepath="$PROJECT_DIR$/RX4A-client/RX4A-client-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RX4A-client/RX4A-client-sdk/RX4A-client-sdk.iml" filepath="$PROJECT_DIR$/RX4A-client/RX4A-client-sdk/RX4A-client-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RX4A-parent.iml" filepath="$PROJECT_DIR$/RX4A-parent.iml" />
+    </modules>
+  </component>
+</project>

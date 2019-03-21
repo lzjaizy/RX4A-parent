@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RX4A" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RX4A-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RX4A-client/RX4A-client-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/RX4A-client/RX4A-client-sdk" charset="UTF-8" />
+  </component>
+</project>
