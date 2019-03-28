@@ -1,5 +1,6 @@
 package com.rx.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.rx.shiro.config.MyShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
@@ -29,7 +30,7 @@ public class ShiroConfig {
       filterChainDefinitionMap.put("/img/**", "anon");
       filterChainDefinitionMap.put("/js/**", "anon");
       filterChainDefinitionMap.put("/html/**", "anon");
-      filterChainDefinitionMap.put("/login", "anon");
+//      filterChainDefinitionMap.put("/login", "anon");
       //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
       filterChainDefinitionMap.put("/logout", "logout");
       //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
@@ -100,5 +101,10 @@ public class ShiroConfig {
       r.setExceptionAttribute("exception");     // Default is "exception"
       //r.setWarnLogCategory("example.MvcLogger");     // No default
       return r;
+   }
+
+   @Bean(name = "shiroDialect")
+   public ShiroDialect shiroDialect(){
+      return new ShiroDialect();
    }
 }
