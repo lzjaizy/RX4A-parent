@@ -32,6 +32,7 @@ public class LoginServiceImpl implements LoginService {
 
         // 3、将用户名和密码封装到UsernamePasswordToken
         UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+//        token.setRememberMe(false);
 
         // 4、认证
         try {

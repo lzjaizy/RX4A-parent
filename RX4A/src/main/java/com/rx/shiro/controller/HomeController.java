@@ -31,7 +31,7 @@ public class HomeController {
     public String toLogin(Map<String, Object> map, HttpServletRequest request)
     {
         loginService.logout();
-        return "/html/login";
+        return "/login";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
@@ -48,13 +48,13 @@ public class HomeController {
         else {
             map.put("msg",loginResult.getResult());
             map.put("username",userName);
-            return "/html/login";
+            return "/login";
         }
     }
 
     @RequestMapping("/logout")
     public String logOut(HttpSession session) {
         loginService.logout();
-        return "/html/login";
+        return "/login";
     }
 }
