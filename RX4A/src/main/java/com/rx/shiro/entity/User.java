@@ -1,81 +1,82 @@
 package com.rx.shiro.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
+import java.sql.Date;
+import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-
-@Entity
 public class User {
-    @Id
-    @GenericGenerator(name="generator",strategy = "native")
-    @GeneratedValue(generator = "generator")
-    private Integer userId;
-    @Column(nullable = false, unique = true)
-    private String userName; //登录用户名
-    @Column(nullable = false)
-    private String name;//名称（昵称或者真实姓名，根据实际情况定义）
-    @Column(nullable = false)
-    private String password;
-    private String salt;//加密密码的盐
-    private byte state;//用户状态,0:创建未认证（比如没有激活，没有输入验证码等等）--等待验证的用户 , 1:正常状态,2：用户被锁定.
-    @ManyToMany(fetch= FetchType.EAGER)//立即从数据库中进行加载数据;
-    @JoinTable(name = "SysUserRole", joinColumns = { @JoinColumn(name = "userId") }, inverseJoinColumns ={@JoinColumn(name = "roleId") })
-    private List<SysRole> roleList;// 一个用户具有多个角色
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime createTime;//创建时间
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate expiredDate;//过期日期
-    private String email;
+    private String id;//主键
+    private String name;//姓名
+    private String login_name;//登录名
+    private Integer age;//年龄
+    private String address;//地址
+    private Integer gender;//性别
+    private String email;//邮箱
+    private String abbreviation;//简称
+    private Date birth_day;//生日
+    private String fax;//传真
+    private String pic_url;//头像图片地址
+    private String comments;//备注
+    private String tenant_id;//隔离ID
+    private Integer status;//状态(0:有效 1:注销 2:冻结)
+    private Integer approval_status;//审批状态
+    private Timestamp create_time;//创建时间
+    private Timestamp modify_time;//修改时间
+    private String create_user;//创建人
+    private String modify_user;//修改人
+    private String mobile;//手机号码
+    private String telephone;//电话号码
+    private Long show_order;//排序号
+    private Date begin_valid_time;//开始生效时间
+    private Date end_valid_time;//结束生效时间
+    private String identity_id;//证件号码
+    private Integer is_superadmin;//0：superadmin创建的  1：不是superadmin创建的
+    private String unit_id;//单位id
+    private Integer bind_address_type;//绑定地址类型 1 IP地址 2 MAC地址
+    private String bind_ip_address;//绑定的ip地址
+    private String bind_mac_address;//绑定的mac地址
 
-    public String getEmail() {
-        return email;
+    public User() {
     }
 
-    public void setEmail(String email) {
+    public User(String id, String name, String login_name, Integer age, String address, Integer gender, String email, String abbreviation, Date birth_day, String fax, String pic_url, String comments, String tenant_id, Integer status, Integer approval_status, Timestamp create_time, Timestamp modify_time, String create_user, String modify_user, String mobile, String telephone, Long show_order, Date begin_valid_time, Date end_valid_time, String identity_id, Integer is_superadmin, String unit_id, Integer bind_address_type, String bind_ip_address, String bind_mac_address) {
+        this.id = id;
+        this.name = name;
+        this.login_name = login_name;
+        this.age = age;
+        this.address = address;
+        this.gender = gender;
         this.email = email;
+        this.abbreviation = abbreviation;
+        this.birth_day = birth_day;
+        this.fax = fax;
+        this.pic_url = pic_url;
+        this.comments = comments;
+        this.tenant_id = tenant_id;
+        this.status = status;
+        this.approval_status = approval_status;
+        this.create_time = create_time;
+        this.modify_time = modify_time;
+        this.create_user = create_user;
+        this.modify_user = modify_user;
+        this.mobile = mobile;
+        this.telephone = telephone;
+        this.show_order = show_order;
+        this.begin_valid_time = begin_valid_time;
+        this.end_valid_time = end_valid_time;
+        this.identity_id = identity_id;
+        this.is_superadmin = is_superadmin;
+        this.unit_id = unit_id;
+        this.bind_address_type = bind_address_type;
+        this.bind_ip_address = bind_ip_address;
+        this.bind_mac_address = bind_mac_address;
     }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
+    public String getId() {
+        return id;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDate getExpiredDate() {
-        return expiredDate;
-    }
-
-    public void setExpiredDate(LocalDate expiredDate) {
-        this.expiredDate = expiredDate;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -86,44 +87,229 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getLogin_name() {
+        return login_name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLogin_name(String login_name) {
+        this.login_name = login_name;
     }
 
-    public String getSalt() {
-        return salt;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public byte getState() {
-        return state;
+    public String getAddress() {
+        return address;
     }
 
-    public void setState(byte state) {
-        this.state = state;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public List<SysRole> getRoleList() {
-        return roleList;
+    public Integer getGender() {
+        return gender;
     }
 
-    public void setRoleList(List<SysRole> roleList) {
-        this.roleList = roleList;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
-    /**
-     * 密码盐. 重新对盐重新进行了定义，用户名+salt，这样就不容易被破解，可以采用多种方式定义加盐
-     * @return
-     */
-    public String getCredentialsSalt(){
-        return this.userName+this.salt;
+    public String getEmail() {
+        return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
+    }
+
+    public Date getBirth_day() {
+        return birth_day;
+    }
+
+    public void setBirth_day(Date birth_day) {
+        this.birth_day = birth_day;
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    public String getPic_url() {
+        return pic_url;
+    }
+
+    public void setPic_url(String pic_url) {
+        this.pic_url = pic_url;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getTenant_id() {
+        return tenant_id;
+    }
+
+    public void setTenant_id(String tenant_id) {
+        this.tenant_id = tenant_id;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getApproval_status() {
+        return approval_status;
+    }
+
+    public void setApproval_status(Integer approval_status) {
+        this.approval_status = approval_status;
+    }
+
+    public Timestamp getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Timestamp create_time) {
+        this.create_time = create_time;
+    }
+
+    public Timestamp getModify_time() {
+        return modify_time;
+    }
+
+    public void setModify_time(Timestamp modify_time) {
+        this.modify_time = modify_time;
+    }
+
+    public String getCreate_user() {
+        return create_user;
+    }
+
+    public void setCreate_user(String create_user) {
+        this.create_user = create_user;
+    }
+
+    public String getModify_user() {
+        return modify_user;
+    }
+
+    public void setModify_user(String modify_user) {
+        this.modify_user = modify_user;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public Long getShow_order() {
+        return show_order;
+    }
+
+    public void setShow_order(Long show_order) {
+        this.show_order = show_order;
+    }
+
+    public Date getBegin_valid_time() {
+        return begin_valid_time;
+    }
+
+    public void setBegin_valid_time(Date begin_valid_time) {
+        this.begin_valid_time = begin_valid_time;
+    }
+
+    public Date getEnd_valid_time() {
+        return end_valid_time;
+    }
+
+    public void setEnd_valid_time(Date end_valid_time) {
+        this.end_valid_time = end_valid_time;
+    }
+
+    public String getIdentity_id() {
+        return identity_id;
+    }
+
+    public void setIdentity_id(String identity_id) {
+        this.identity_id = identity_id;
+    }
+
+    public Integer getIs_superadmin() {
+        return is_superadmin;
+    }
+
+    public void setIs_superadmin(Integer is_superadmin) {
+        this.is_superadmin = is_superadmin;
+    }
+
+    public String getUnit_id() {
+        return unit_id;
+    }
+
+    public void setUnit_id(String unit_id) {
+        this.unit_id = unit_id;
+    }
+
+    public Integer getBind_address_type() {
+        return bind_address_type;
+    }
+
+    public void setBind_address_type(Integer bind_address_type) {
+        this.bind_address_type = bind_address_type;
+    }
+
+    public String getBind_ip_address() {
+        return bind_ip_address;
+    }
+
+    public void setBind_ip_address(String bind_ip_address) {
+        this.bind_ip_address = bind_ip_address;
+    }
+
+    public String getBind_mac_address() {
+        return bind_mac_address;
+    }
+
+    public void setBind_mac_address(String bind_mac_address) {
+        this.bind_mac_address = bind_mac_address;
+    }
+
 
 }

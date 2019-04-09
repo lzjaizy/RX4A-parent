@@ -33,11 +33,11 @@
 
 
 
-    </style>
+</style>
 
 </head>
 <body>
-
+<h3 th:text="${msg}" th:color="red"></h3>
 <div class="container">
     <div class="row center">
         <div class="divBorder col-sm-offset-3 col-sm-6">
@@ -56,9 +56,9 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
                 </div>
 
-
                 <br>
                 <input type="submit" class="btn btn-lg btn-block btn-info" value="登 录">
+                <a href="/register.html" target="view_frame">注册</a>
             </form>
         </div>
 

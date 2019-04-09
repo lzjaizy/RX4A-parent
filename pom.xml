@@ -13,6 +13,7 @@
 
     <groupId>com.rx</groupId>
     <artifactId>RX4A-parent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <name>${project.artifactId}</name>

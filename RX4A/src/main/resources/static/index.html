@@ -41,17 +41,17 @@
 </p>
 
 <!-- 验证当前用户是否属于以下所有角色。 -->
-<p shiro:hasAllRoles="developer, 2"><!-- 角色与判断 -->
-    You are a developer and a admin.
-</p>
+<!--<p shiro:hasAllRoles="developer, 2">&lt;!&ndash; 角色与判断 &ndash;&gt;-->
+    <!--You are a developer and a admin.-->
+<!--</p>-->
 
 <!-- 验证当前用户是否属于以下任意一个角色。  -->
-<p shiro:hasAnyRoles="admin, vip, developer,1"><!-- 角色或判断 -->
-    You are a admin, vip, or developer.
-</p>
+<!--<p shiro:hasAnyRoles="admin, vip, developer,1">&lt;!&ndash; 角色或判断 &ndash;&gt;-->
+    <!--You are a admin, vip, or developer.-->
+<!--</p>-->
 
-<!--验证当前用户是否拥有指定权限。  -->
-<a shiro:hasPermission="user:add" href="createUser.html">添加用户</a><!-- 拥有权限 -->
+<!--验证当前用户是否拥有指定权限。 shiro:hasPermission="user:add"  -->
+<a  href="/user/userAdd">添加用户</a><!-- 拥有权限 -->
 
 <!-- 与hasPermission标签逻辑相反，当前用户没有制定权限时，验证通过。 -->
 <p shiro:lacksPermission="user:del"><!-- 没有权限 -->
@@ -60,13 +60,13 @@
 
 <!-- 验证当前用户是否拥有以下所有角色。 -->
 <!--<p shiro:hasAllPermissions="user:view, userInfo:add">&lt;!&ndash; 权限与判断 &ndash;&gt;-->
-    <!--You can see or add users.-->
+<!--You can see or add users.-->
 <!--</p>-->
 
 <!-- 验证当前用户是否拥有以下任意一个权限。  -->
-<p shiro:hasAnyPermissions="user:view, user:del"><!-- 权限或判断 -->
-    You can see or delete users.
-</p>
+<!--<p shiro:hasAnyPermissions="user:view, user:del">&lt;!&ndash; 权限或判断 &ndash;&gt;-->
+    <!--You can see or delete users.-->
+<!--</p>-->
 <!--<a shiro:hasPermission="pp" href="createUser.html">Create a new User</a>-->
 </body>
 </html>
