@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<!--<script src="jquery/jquery-1.8.0.min.js"></script>-->
+<body>
+<form action="/register" method="post">
+    <ul>
+        <li>姓　名：<input type="text" name="registerName" /> </li>
+        <li>密　码：<input type="text" name="password" /> </li>
+        <li><input type="submit" id="toRegister" value="注册" /> </li>
+    </ul>
+</form>
+</body>
+<!--<script>-->
+    <!--$("#toRegister").click(function(){-->
+        <!--var registerName=$("#registerName").val()-->
+        <!--var password=$("#password").val()-->
+
+        <!--$.ajax({-->
+            <!--type:"post",-->
+            <!--url:"/aaa?registerName="+registerName+"&"+"password="+password,-->
+            <!--dataType:"json",-->
+            <!--success:function(data){-->
+                <!--if(data.status=="200"){-->
+                    <!--alert("chenggong")-->
+                <!--}else{-->
+                    <!--alert("shibai")-->
+                <!--}-->
+            <!--},-->
+            <!--error:function(jqXHR){-->
+                <!--aler("发生错误："+ jqXHR.status);-->
+            <!--}-->
+        <!--})-->
+<!--})-->
+
+<!--</script>-->
+</html>
