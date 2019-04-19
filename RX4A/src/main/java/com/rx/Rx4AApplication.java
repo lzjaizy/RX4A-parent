@@ -7,8 +7,9 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 
 @SpringBootApplication
-@MapperScan("com.rx.demo.dao")
-@ServletComponentScan(value = "com.rx.config")
+@MapperScan({"com.rx.authPlat.*.dao","com.rx.demo.dao"})
+//@MapperScan("com.rx.demo.dao")
+//@ServletComponentScan(value = "com.rx.config")
 //@ComponentScan(basePackages={"com"})
 public class Rx4AApplication {
 

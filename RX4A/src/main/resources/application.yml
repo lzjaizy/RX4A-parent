@@ -8,9 +8,11 @@ spring:
       driverClassName: com.mysql.jdbc.Driver
       driver-class-name: com.mysql.jdbc.Driver
       platform: mysql
-      url: jdbc:mysql://180.168.156.212:2366/passworder?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      #url: jdbc:mysql://192.168.0.42:3306/auth?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
-      password: root
+      #password: czkjj@001
+      password:
       initialSize: 5
       minIdle: 5
       maxActive: 20
@@ -24,14 +26,14 @@ spring:
       filters: stat,wall
       logSlowSql: true
 
-    jpa:
-      hibernate:
-          ddl-auto: update
-          naming:
-              physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #按字段名字建表
-      show-sql: true
-      database: mysql
-      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    jpa:
+#      hibernate:
+#          ddl-auto: update
+#          naming:
+#              physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #按字段名字建表
+#      show-sql: true
+#      database: mysql
+#      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
     thymeleaf:
       cache: false
