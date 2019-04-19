@@ -8,11 +8,10 @@ spring:
       driverClassName: com.mysql.jdbc.Driver
       driver-class-name: com.mysql.jdbc.Driver
       platform: mysql
-      #url: jdbc:mysql://192.168.0.42:3306/auth?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://180.168.156.212:2366/auth30?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#      url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
-      #password: czkjj@001
-      password:
+      password: root
       initialSize: 5
       minIdle: 5
       maxActive: 20

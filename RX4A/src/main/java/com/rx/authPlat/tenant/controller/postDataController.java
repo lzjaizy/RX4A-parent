@@ -30,7 +30,7 @@ public class postDataController {
         PostDataEntity postDataEntity=new PostDataEntity();
 
 
-        int i=postDataMapper.postData(contextData.get(1));
+        int i=postDataMapper.postData(contextData.get(0));
         if (i == 0) {
             return new ResponseMessage().setCode(StateDict.FAILCODE_NOFOUND).setMessage(StateDict.FAIL_NOFOUND).setData(i);
         }
