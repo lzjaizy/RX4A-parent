@@ -1,7 +1,8 @@
 package com.rx.authPlat.tenant.controller;
 
 import com.rx.authPlat.tenant.dao.PostDataMapper;
-import com.rx.authPlat.tenant.entity.PostDataEntity;
+
+import com.rx.authPlat.tenant.entity.PostDatasEntity;
 import com.rx.utils.ResponseMessage;
 import com.rx.utils.StateDict;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,11 @@ public class postDataController {
     private PostDataMapper postDataMapper;
     @ResponseBody
     @RequestMapping(value = "/postToSystem",method = RequestMethod.POST)
-    public ResponseMessage postData(@RequestBody List<PostDataEntity> contextData){
-        PostDataEntity postDataEntity=new PostDataEntity();
+    public ResponseMessage postData(@RequestBody List<PostDatasEntity> contextData){
 
 
-        int i=postDataMapper.postData(contextData.get(0));
+        System.out.println(contextData);
+        int i=postDataMapper.postData(contextData.get(contextData.size()-1));
         if (i == 0) {
             return new ResponseMessage().setCode(StateDict.FAILCODE_NOFOUND).setMessage(StateDict.FAIL_NOFOUND).setData(i);
         }

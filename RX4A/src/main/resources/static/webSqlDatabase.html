@@ -3,7 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Sql Database</title>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="easyui/demo/demo.css">
     <script type="text/javascript" src="jquery/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.1.3.2.js"></script>
+
+    <style type="text/css">
+        table.gridtable {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table.gridtable th {
+            border-width: 1px;
+            padding: 4px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table.gridtable td {
+            border-width: 1px;
+            padding:0px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+    </style>
+
 </head>
 <body>
     <script type="text/javascript">
@@ -41,55 +72,25 @@
 
         };
 
-        function getDatabases() {
-            console.log($('#name').val());
-            console.log($('#age').val());
-            var name = $('#name').val();
-            var age = $('#age').val();
-            db.transaction(function (context) {
-                context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, name,age)');
-
-                context.executeSql('INSERT INTO testTable (id, name,age) VALUES (1, ' + name + ','+ age +')');
-                console.log("取出成功");
-            });
-
-
-            db.transaction(function (context) {
-
-                context.executeSql(
-                    "SELECT * FROM testTable ", [],
-
-                    function (context, results) {
-                        var len = results.rows.length;
-                        for(var i=0;i<len;i++){
-                            var temp = {};
-                            console.log('取出的id: '+results.rows.item(i).id);
-                            console.log('取出的name: '+results.rows.item(i).name);
-                            console.log('取出的age:'+results.rows.item(i).age);
-                            temp.id = results.rows.item(i).id;
-                            temp.name = results.rows.item(i).name;
-                            temp.age = results.rows.item(i).age;
-                            contextData.push(temp);
-                            // console.log('contextData:'+contextData.push(temp));
-                        }
-                    },
-                    function (context, error) {
-                        alert('查询失败: ' );
-                        console.log(error);
-                    }
-                );
-
-            });
-            }
-
         function postToSystem() {
             var temp = {};
-            var name = $('#name').val();
-            var age = $('#age').val();
-            temp.id = 1;
-            temp.name = name;
-            temp.age = age;
+
+            var projectName = $('#name').val();
+            var projectInitiator = $('#ini').val();
+            var projectData=$('#data').val();
+            var projectRemark=$('#remark').val();
+            var projectIntroduction=$('#intro').val();
+
+
+            //var id=1;
+            temp.projectName = projectName;
+            temp.projectInitiator = projectInitiator;
+            temp.projectData = projectData;
+            temp.projectRemark = projectRemark;
+            temp.projectIntroduction = projectIntroduction;
+
             contextData.push(temp);
+            console.log(contextData);
             if(navigator.onLine){
                 $.ajax({
                     url: 'postData/postToSystem',
@@ -108,10 +109,11 @@
                     }
                 })
             }else{
+                alert('网络断开，请等待网络恢复');
                 db.transaction(function (context) {
-                    context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, name,age)');
+                    context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, projectName,projectInitiator,projectData,projectRemark,projectIntroduction)');
 
-                    context.executeSql('INSERT INTO testTable (id, name,age) VALUES (1, ' + name + ','+ age +')');
+                    context.executeSql('INSERT INTO testTable (id,projectName,projectInitiator,projectData,projectRemark,projectIntroduction) VALUES (1, ' + projectName + ','+ projectInitiator +','+projectData+','+projectRemark+','+projectIntroduction+')');
                 });
             }
             console.log(contextData);
@@ -121,12 +123,46 @@
 
     </script>
 <div>
-   <input type="text" name="userName" id="name"></td>
-   <input type="text" name="userAge" id="age">
+<!--    项目名：       &nbsp;&nbsp; <input type="text" name="projectName" id="name"><br><br>-->
+<!--    发起人：       &nbsp;&nbsp;&nbsp;<input type="text" name="projectInitiator" id="ini"><br><br>-->
+<!--    项目日期：     <input type="text" name="projectData" id="data"><br><br>-->
+<!--    项目摘要：     <input type="text" name="projectRemark" id="remark"><br><br>-->
+<!--    项目简介：     <input type="text" name="projectIntroduction" id="intro"><br><br>-->
+<!--    <button onclick="postToSystem()"> 发送 </button>-->
 
-    <button onclick="getDatabases()"> 取出数据 </button>
-    <button onclick="postToSystem()"> 发送后台 </button>
-    <button onclick="recoveryData()"> 恢复数据 </button>
+    <table class="gridtable">
+        <tr>
+            <th>项目名</th>
+            <th>项目发起人</th>
+            <th>项目日期</th>
+            <th>项目摘要</th>
+            <th>项目简介</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="projectName" id="name"  style="width: 100%; height: 100%" ></td>
+            <td><input type="text" name="projectName" id="ini"  style="width: 100%; height: 100%" ></td>
+            <td><input type="text" name="projectName" id="data"  style="width: 100%; height: 100%" ></td>
+            <td><input type="text" name="projectName" id="remark"  style="width: 100%; height: 100%" ></td>
+            <td><input type="text" name="projectName" id="intro"   ></td>
+        </tr>
+
+
+    </table>
+    <button onclick="postToSystem()"> 发送 </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 </body>

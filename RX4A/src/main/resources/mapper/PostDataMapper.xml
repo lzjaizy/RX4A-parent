@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.rx.authPlat.tenant.dao.PostDataMapper" >
 
-    <insert id="postData" parameterType="com.rx.authPlat.tenant.entity.PostDataEntity" >
-        insert into post_data ( name, age
+    <insert id="postData" parameterType="com.rx.authPlat.tenant.entity.PostDatasEntity" >
+        insert into post_data ( p_name, p_initiator,p_date,p_remark,p_introduction
         )
-        values ( #{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}
+        values ( #{projectName,jdbcType=VARCHAR}, #{projectInitiator,jdbcType=VARCHAR},#{projectDate,jdbcType=TIMESTAMP},#{projectRemark,jdbcType=VARCHAR},#{projectIntroduction,jdbcType=VARCHAR}
         )
     </insert>
 
