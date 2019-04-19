@@ -13,32 +13,32 @@
         var db;
         window.onload=function () {
             db = openDatabase('testDB', '1.0', '我的测试数据库', 2 * 1024 * 1024);
-            for (var i = 0; i < 100; i++){
-                setTimeout(function(){
-                    if(navigator.onLine){
-                        if (contextData.length > 0){
-                            $.ajax({
-                                url: 'postData/postToSystem',
-                                type: 'post',
-                                data: JSON.stringify(contextData),
-                                contentType: 'application/json',
-                                dataType: 'json',
-                                success: function (result) {
-                                    console.log(result);
-                                    if (result.code == 200) {
-                                        alert('恢复成功');
-                                        contextData = [];
-                                    } else {
-                                        alert('发送失败');
-                                    }
+            setInterval(function(){
+                if(navigator.onLine){
+                    console.log('online');
+                    if (contextData.length > 0){
+                        $.ajax({
+                            url: 'postData/postToSystem',
+                            type: 'post',
+                            data: JSON.stringify(contextData),
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            success: function (result) {
+                                console.log(result);
+                                if (result.code == 200) {
+                                    alert('恢复成功');
+                                    contextData = [];
+                                } else {
+                                    alert('发送失败');
                                 }
-                            })
-                        }
-                    }else {
-                        console.log('outline')
+                            }
+                        })
                     }
-                }, 30000);
-            }
+                }else {
+                    console.log('outline')
+                }
+            }, 10000);
+
         };
 
         function getDatabases() {
