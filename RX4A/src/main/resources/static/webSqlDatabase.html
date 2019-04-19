@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Sql Database</title>
+    <script type="text/javascript" src="jquery/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var contextData = [];
+        var N = $('#name').val();
+        var A = $('#age').val();
+        var db;
+        window.onload=function () {
+            db = openDatabase('testDB', '1.0', '我的测试数据库', 2 * 1024 * 1024);
+            // db.transaction(function (context) {
+            //     context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, name,age)');
+            //     context.executeSql('INSERT INTO testTable (id, name,age) VALUES (1, "meng1",10)');
+            //     context.executeSql('INSERT INTO testTable (id, name,age) VALUES ( 2,"meng2",20)');
+            //     context.executeSql('INSERT INTO testTable (id, name,age) VALUES (3, "meng3",30)');
+
+            //        db.transaction(function (context) {
+            //            context.executeSql('SELECT * FROM testTable', [], function (context, results) {
+            //                var len = results.rows.length, i;
+            //                console.log('Got '+len+' rows.');
+            //                for (i = 0; i < len; i++){
+            //                    console.log('id: '+results.rows.item(i).id);
+            //                    console.log('name: '+results.rows.item(i).name);
+            //                    console.log('age:'+results.rows.item(i).age);
+            //                }
+            //            });
+            //        });
+            //
+            //    });
+            };
+
+            function getDatabases() {
+                db.transaction(function (context) {
+                    context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, name,age)');
+                    console.log($('#name').val());
+                    console.log($('#age').val());
+                    context.executeSql('INSERT INTO testTable (id, name,age) VALUES (1, n,age)');
+                    console.log("取出成功");
+                });
+
+
+                db.transaction(function (context) {
+
+                    context.executeSql(
+                        "select * from testTable ", [],
+
+                        function (context, results) {
+                            var len = results.rows.length;
+                            for(i=0;i<len;i++){
+                                var temp = {};
+                                console.log('取出的id: '+results.rows.item(i).id);
+                                console.log('取出的name: '+results.rows.item(i).name);
+                                console.log('取出的age:'+results.rows.item(i).age);
+                                temp.id = results.rows.item(i).id;
+                                temp.name = results.rows.item(i).name;
+                                temp.age = results.rows.item(i).age;
+                                contextData.push(temp);
+                                console.log('contextData:'+contextData.push(temp));
+                            }
+                        },
+                        function (context, error) {
+                            alert('查询失败: ' );
+                        } );
+
+                });
+                }
+
+                function postToSystem() {
+                    console.log(contextData);
+                    $.ajax({
+                        url: 'postData/postToSystem',
+                        type: 'post',
+                        data: JSON.stringify(contextData),
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            console.log(result);
+                            if (result.code == 200) {
+                                alert('发送成功');
+                            } else {
+                                alert('发送失败');
+                            }
+                        }
+                    })
+                }
+
+
+    </script>
+<div>
+   <input type="text" name="userName" id="name"></td>
+   <input type="text" name="userAge" id="age">
+
+    <button onclick="getDatabases()"> 取出数据 </button>
+    <button onclick="postToSystem()"> 发送后台 </button>
+    <button onclick="recoveryData()"> 恢复数据 </button>
+</div>
+
+</body>
+</html>
