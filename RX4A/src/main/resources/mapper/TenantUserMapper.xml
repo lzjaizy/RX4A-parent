@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rx.authPlat.tenant.dao.TenantUserMapper">
+
+    <select id="findUserByName" parameterType="java.lang.String" resultType="com.rx.authPlat.tenant.entity.User">
+        select
+        *
+        from t_user
+        where
+        login_name=#{loginName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryUsers" parameterType="java.lang.String" resultType="com.rx.authPlat.tenant.entity.User">
+        select
+        *
+        from t_user
+        where
+        login_name= #{name,jdbcType=VARCHAR}
+        and
+        name = #{login_name,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

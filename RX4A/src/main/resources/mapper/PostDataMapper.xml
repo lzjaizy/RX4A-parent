@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rx.authPlat.tenant.dao.PostDataMapper" >
+
+    <insert id="postData" parameterType="com.rx.authPlat.tenant.entity.PostDataEntity" >
+        insert into post_data ( name, age
+        )
+        values ( #{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>
