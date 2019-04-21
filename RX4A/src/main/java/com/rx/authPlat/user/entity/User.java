@@ -1,11 +1,11 @@
-package com.rx.authPlat.tenant.entity;
+package com.rx.authPlat.user.entity;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * @PackageName com.rx.authPlat.tenant.entity
- * @ClassName User
+ * @ClassName user
  * @Description 用户实体类
  * @Author MengQingJun
  * @Date 2019/4/13
@@ -376,7 +376,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "user{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", loginName='" + loginName + '\'' +

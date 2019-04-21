@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rx.authPlat.tenant.dao.TenantUserMapper">
+<mapper namespace="com.rx.authPlat.user.dao.TenantUserMapper">
 
-    <select id="findUserByName" parameterType="java.lang.String" resultType="com.rx.authPlat.tenant.entity.User">
+    <select id="findUserByName" parameterType="java.lang.String" resultType="com.rx.authPlat.user.entity.User">
         select
         *
         from t_user
@@ -10,7 +10,7 @@
         login_name=#{loginName,jdbcType=VARCHAR}
     </select>
 
-    <select id="queryUsers" parameterType="java.lang.String" resultType="com.rx.authPlat.tenant.entity.User">
+    <select id="queryUsers" parameterType="java.lang.String" resultType="com.rx.authPlat.user.entity.User">
         select
         *
         from t_user
@@ -20,4 +20,267 @@
         name = #{login_name,jdbcType=VARCHAR}
     </select>
 
+    <insert id="addUser"  parameterType="com.rx.authPlat.user.entity.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="loginName != null">
+                login_name,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="abbreviation != null">
+                abbreviation,
+            </if>
+            <if test="birthDay != null">
+                birth_day,
+            </if>
+            <if test="fax != null">
+                fax,
+            </if>
+            <if test="picUrl != null">
+                pic_url,
+            </if>
+            <if test="comments != null">
+                comments,
+            </if>
+            <if test="tenantId != null">
+                tenant_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="approvalStatus != null">
+                approval_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="createUser != null">
+                create_user,
+            </if>
+            <if test="modifyUser != null">
+                modify_user,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="telephone != null">
+                telephone,
+            </if>
+            <if test="showOrder != null">
+                show_order,
+            </if>
+            <if test="beginValidTime != null">
+                begin_valid_time,
+            </if>
+            <if test="endValidTime != null">
+                end_valid_time,
+            </if>
+            <if test="identityId != null">
+                identity_id,
+            </if>
+            <if test="isSuperadmin != null">
+                is_superadmin,
+            </if>
+            <if test="unitId != null">
+                unit_id,
+            </if>
+            <if test="flag1 != null">
+                flag1,
+            </if>
+            <if test="flag2 != null">
+                flag2,
+            </if>
+            <if test="flag3 != null">
+                flag3,
+            </if>
+            <if test="flag4 != null">
+                flag4,
+            </if>
+            <if test="flag5 != null">
+                flag5,
+            </if>
+            <if test="flag6 != null">
+                flag6,
+            </if>
+            <if test="flag7 != null">
+                flag7,
+            </if>
+            <if test="flag8 != null">
+                flag8,
+            </if>
+            <if test="flag9 != null">
+                flag9,
+            </if>
+            <if test="flag10 != null">
+                flag10,
+            </if>
+            <if test="bindAddressType != null">
+                bind_address_type,
+            </if>
+            <if test="bindIpAddress != null">
+                bind_ip_address,
+            </if>
+            <if test="bindMacAddress != null">
+                bind_mac_address,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="loginName != null">
+                #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="abbreviation != null">
+                #{abbreviation,jdbcType=VARCHAR},
+            </if>
+            <if test="birthDay != null">
+                #{birthDay,jdbcType=DATE},
+            </if>
+            <if test="fax != null">
+                #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="picUrl != null">
+                #{picUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="comments != null">
+                #{comments,jdbcType=VARCHAR},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="approvalStatus != null">
+                #{approvalStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyUser != null">
+                #{modifyUser,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="showOrder != null">
+                #{showOrder,jdbcType=BIGINT},
+            </if>
+            <if test="beginValidTime != null">
+                #{beginValidTime,jdbcType=DATE},
+            </if>
+            <if test="endValidTime != null">
+                #{endValidTime,jdbcType=DATE},
+            </if>
+            <if test="identityId != null">
+                #{identityId,jdbcType=VARCHAR},
+            </if>
+            <if test="isSuperadmin != null">
+                #{isSuperadmin,jdbcType=INTEGER},
+            </if>
+            <if test="unitId != null">
+                #{unitId,jdbcType=VARCHAR},
+            </if>
+            <if test="flag1 != null">
+                #{flag1,jdbcType=VARCHAR},
+            </if>
+            <if test="flag2 != null">
+                #{flag2,jdbcType=VARCHAR},
+            </if>
+            <if test="flag3 != null">
+                #{flag3,jdbcType=VARCHAR},
+            </if>
+            <if test="flag4 != null">
+                #{flag4,jdbcType=VARCHAR},
+            </if>
+            <if test="flag5 != null">
+                #{flag5,jdbcType=VARCHAR},
+            </if>
+            <if test="flag6 != null">
+                #{flag6,jdbcType=VARCHAR},
+            </if>
+            <if test="flag7 != null">
+                #{flag7,jdbcType=VARCHAR},
+            </if>
+            <if test="flag8 != null">
+                #{flag8,jdbcType=VARCHAR},
+            </if>
+            <if test="flag9 != null">
+                #{flag9,jdbcType=VARCHAR},
+            </if>
+            <if test="flag10 != null">
+                #{flag10,jdbcType=VARCHAR},
+            </if>
+            <if test="bindAddressType != null">
+                #{bindAddressType,jdbcType=INTEGER},
+            </if>
+            <if test="bindIpAddress != null">
+                #{bindIpAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="bindMacAddress != null">
+                #{bindMacAddress,jdbcType=VARCHAR},
+            </if>
+
+
+        </trim>
+    </insert>
+
+    <select id="queryUserRoles" parameterType="java.lang.String"
+            resultType="com.rx.authPlat.user.entity.Role">
+        select
+        *
+        from t_role
+        where
+        id in(SELECT role_id FROM t_link_user_role
+        WHERE
+        user_id=#{id,jdbcType=VARCHAR}
+        )
+
+    </select>
 </mapper>
