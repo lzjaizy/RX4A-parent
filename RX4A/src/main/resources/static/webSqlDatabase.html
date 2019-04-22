@@ -39,26 +39,25 @@
 <body>
     <script type="text/javascript">
         var contextData = [];
-        var N = $('#name').val();
-        var A = $('#age').val();
+        var contextDataOutLine = [];
         var db;
         window.onload=function () {
             db = openDatabase('testDB', '1.0', '我的测试数据库', 2 * 1024 * 1024);
             setInterval(function(){
                 if(navigator.onLine){
                     console.log('online');
-                    if (contextData.length > 0){
+                    if (contextDataOutLine.length > 0){
                         $.ajax({
                             url: 'postData/postToSystem',
                             type: 'post',
-                            data: JSON.stringify(contextData),
+                            data: JSON.stringify(contextDataOutLine),
                             contentType: 'application/json',
                             dataType: 'json',
                             success: function (result) {
                                 console.log(result);
                                 if (result.code == 200) {
                                     alert('恢复成功');
-                                    contextData = [];
+                                    contextDataOutLine = [];
                                 } else {
                                     alert('发送失败');
                                 }
@@ -75,19 +74,19 @@
         function postToSystem() {
             var temp = {};
 
-            var projectName = $('#name').val();
-            var projectInitiator = $('#ini').val();
-            var projectData=$('#data').val();
-            var projectRemark=$('#remark').val();
-            var projectIntroduction=$('#intro').val();
+            var name = $('#name').val();
+            var ini = $('#ini').val();
+            var date=$('#date').val();
+            var remark=$('#remark').val();
+            var intro=$('#intro').val();
 
 
             //var id=1;
-            temp.projectName = projectName;
-            temp.projectInitiator = projectInitiator;
-            temp.projectData = projectData;
-            temp.projectRemark = projectRemark;
-            temp.projectIntroduction = projectIntroduction;
+            temp.name = name;
+            temp.ini = ini;
+            temp.date = date;
+            temp.remark = remark;
+            temp.intro = intro;
 
             contextData.push(temp);
             console.log(contextData);
@@ -109,11 +108,12 @@
                     }
                 })
             }else{
+                contextDataOutLine.push(temp);
                 alert('网络断开，请等待网络恢复');
                 db.transaction(function (context) {
-                    context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, projectName,projectInitiator,projectData,projectRemark,projectIntroduction)');
+                    // context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, projectName,projectInitiator,projectData,projectRemark,projectIntroduction)');
 
-                    context.executeSql('INSERT INTO testTable (id,projectName,projectInitiator,projectData,projectRemark,projectIntroduction) VALUES (1, ' + projectName + ','+ projectInitiator +','+projectData+','+projectRemark+','+projectIntroduction+')');
+                    // context.executeSql('INSERT INTO testTable (id,projectName,projectInitiator,projectData,projectRemark,projectIntroduction) VALUES (1, ' + projectName + ','+ projectInitiator +','+projectData+','+projectRemark+','+projectIntroduction+')');
                 });
             }
             console.log(contextData);
@@ -123,32 +123,32 @@
 
     </script>
 <div>
-<!--    项目名：       &nbsp;&nbsp; <input type="text" name="projectName" id="name"><br><br>-->
-<!--    发起人：       &nbsp;&nbsp;&nbsp;<input type="text" name="projectInitiator" id="ini"><br><br>-->
-<!--    项目日期：     <input type="text" name="projectData" id="data"><br><br>-->
-<!--    项目摘要：     <input type="text" name="projectRemark" id="remark"><br><br>-->
-<!--    项目简介：     <input type="text" name="projectIntroduction" id="intro"><br><br>-->
-<!--    <button onclick="postToSystem()"> 发送 </button>-->
-
-    <table class="gridtable">
-        <tr>
-            <th>项目名</th>
-            <th>项目发起人</th>
-            <th>项目日期</th>
-            <th>项目摘要</th>
-            <th>项目简介</th>
-        </tr>
-        <tr>
-            <td><input type="text" name="projectName" id="name"  style="width: 100%; height: 100%" ></td>
-            <td><input type="text" name="projectName" id="ini"  style="width: 100%; height: 100%" ></td>
-            <td><input type="text" name="projectName" id="data"  style="width: 100%; height: 100%" ></td>
-            <td><input type="text" name="projectName" id="remark"  style="width: 100%; height: 100%" ></td>
-            <td><input type="text" name="projectName" id="intro"   ></td>
-        </tr>
-
-
-    </table>
+    项目名：       &nbsp;&nbsp; <input type="text" id="name"><br><br>
+    发起人：       &nbsp;&nbsp;&nbsp;<input type="text" id="ini"><br><br>
+    项目日期：     <input type="text" id="date"><br><br>
+    项目摘要：     <input type="text" id="remark"><br><br>
+    项目简介：     <input type="text" id="intro"><br><br>
     <button onclick="postToSystem()"> 发送 </button>
+
+    <!--<table class="gridtable">-->
+        <!--<tr>-->
+            <!--<th>项目名</th>-->
+            <!--<th>项目发起人</th>-->
+            <!--<th>项目日期</th>-->
+            <!--<th>项目摘要</th>-->
+            <!--<th>项目简介</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td><input type="text" id="name"  style="width: 100%; height: 100%" ></td>-->
+            <!--<td><input type="text" id="ini"  style="width: 100%; height: 100%" ></td>-->
+            <!--<td><input type="text" id="date"  style="width: 100%; height: 100%" ></td>-->
+            <!--<td><input type="text" id="remark"  style="width: 100%; height: 100%" ></td>-->
+            <!--<td><input type="text" id="intro"   ></td>-->
+        <!--</tr>-->
+
+
+    <!--</table>-->
+    <!--<button onclick="postToSystem()"> 发送 </button>-->
 
 
 
